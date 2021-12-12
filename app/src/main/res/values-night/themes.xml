@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Study.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/back_top</item>
+        <item name="colorPrimaryVariant">@color/back_top</item>
+        <item name="colorOnPrimary">@color/btns</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!--<style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>-->
+</resources>
