@@ -11,12 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Study">
         <activity
-            android:name=".ChooseCity"
+            android:name=".Forecast"
             android:exported="true"
             android:theme="@style/Theme.Study.NoActionBar"
             />
         <activity
-            android:name=".MainActivity"
+            android:name=".Parameters"
             android:exported="true"
             android:theme="@style/Theme.Study.NoActionBar">
             <intent-filter>

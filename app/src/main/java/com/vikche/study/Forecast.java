@@ -4,23 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class ChooseCity extends AppCompatActivity {
+public class Forecast extends AppCompatActivity implements Constants {
     private final String TAG = this.getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_city);
+        setContentView(R.layout.activity_broadcast);
 
         String instanceState;
         if (savedInstanceState == null) {
@@ -31,34 +28,31 @@ public class ChooseCity extends AppCompatActivity {
         if (BuildConfig.USE_LOG) {
             Log.d(TAG, instanceState + " - onCreate()");
         }
-//implementation of autoCompleteTextView functionality
-        String[] cities = getResources().getStringArray(R.array.cities);
-        AutoCompleteTextView actv = findViewById(R.id.auto_city_view);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1,cities);
-        actv.setAdapter(adapter);
-        CheckBox windSpeed = findViewById(R.id.wind_speed_box);
-        CheckBox atmPressure = findViewById(R.id.atm_pressure_box);
+        String intentText = getIntent().getExtras().getString(TEXT);
+        TextView cityOutput = findViewById(R.id.city_output_tv);
+        cityOutput.setText(intentText);
 
-        windSpeed.setChecked(MainPresenter.getInstance().isWindBoxChecked());
-        atmPressure.setChecked(MainPresenter.getInstance().isPressureBoxChecked());
-
-        Button checkBtn = findViewById(R.id.check_btn);
-        checkBtn.setOnClickListener(new View.OnClickListener() {
+        Button backBtn = findViewById(R.id.back_btn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainPresenter.getInstance().setWindBoxChecked(windSpeed.isChecked());
-                MainPresenter.getInstance().setPressureBoxChecked(atmPressure.isChecked());
-                showWeather(actv);
+                finish();
+            }
+        });
+
+        Button aboutCityBtn = findViewById(R.id.about_city_btn);
+        aboutCityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = getString(R.string.wiki) + cityOutput.getText().toString();
+                Uri uri = Uri.parse(url);
+                Intent openBrowser = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(openBrowser);
             }
         });
     }
 
-    public void showWeather(AutoCompleteTextView actv) {
-        MainPresenter.getInstance().setCityNameInput(actv.getText().toString());
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-    }
+
 
     @Override
     protected void onStart() {

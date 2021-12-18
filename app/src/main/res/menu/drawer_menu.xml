@@ -10,12 +10,12 @@
                 android:id="@+id/switch_mode"
                 android:title="@string/switch_mode"
                 android:icon="@drawable/ic_night_mode"
-                app:actionLayout="@layout/switch_item" />
+                app:actionLayout="@layout/drawer_switch_item" />
             <item
                 android:id="@+id/change_lang"
                 android:title="@string/change_lang"
                 android:icon="@drawable/ic_change_lang"
-                app:actionLayout="@layout/switch_item"/>
+                app:actionLayout="@layout/drawer_switch_item"/>
         </menu>
     </item>
 </menu>

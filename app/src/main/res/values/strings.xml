@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="cities">
+        <item>Moscow</item>
+        <item>Saint Petersburg</item>
+        <item>New York</item>
+        <item>Los Angeles</item>
+    </string-array>
     <string name="app_name">Weather Forecast</string>
-    <string name="city_choose_button">Choose city</string>
     <string name="city_hint">City</string>
     <string name="check_btn">Check</string>
     <string name="wind_cb">Wind speed</string>
@@ -9,10 +14,7 @@
     <string name="switch_mode">Switch mode</string>
     <string name="change_lang">Change language</string>
     <string name="options">Options</string>
-    <string-array name="cities">
-        <item>Moscow</item>
-        <item>Saint-Petersburg</item>
-        <item>New-York</item>
-        <item>Los-Angeles</item>
-    </string-array>
+    <string name="about_city_btn">About city</string>
+    <string name="back">Back</string>
+    <string name="wiki">https://en.wikipedia.org/wiki/</string>
 </resources>

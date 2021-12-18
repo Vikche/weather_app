@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/background_view"
+        android:id="@+id/background_iv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -14,71 +15,84 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/background" />
 
-    <AutoCompleteTextView
-        android:id="@+id/auto_city_view"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/city_output_tv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-thin"
-        android:hint="@string/city_hint"
-        android:singleLine="true"
         android:textColor="@color/white"
-        android:textSize="34sp"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/wind_speed_box"
+    <TextView
+        android:id="@+id/temp_output_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-thin"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city_output_tv" />
+
+    <TextView
+        android:id="@+id/wind_output_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:buttonTint="@color/btns"
-        android:checked="false"
-        android:fontFamily="sans-serif-thin"
-        android:text="@string/wind_cb"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/atm_pressure_box"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/auto_city_view" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/pressure_output_tv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/temp_output_tv"
+        app:layout_constraintTop_toBottomOf="@+id/city_output_tv" />
 
-    <CheckBox
-        android:id="@+id/atm_pressure_box"
+    <TextView
+        android:id="@+id/pressure_output_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:buttonTint="@color/btns"
-        android:fontFamily="sans-serif-thin"
-        android:text="@string/pressure_cb"
-        android:textColor="@color/white"
-        android:textSize="14sp"
+        android:layout_marginEnd="16dp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/auto_city_view" />
+        app:layout_constraintTop_toBottomOf="@+id/city_output_tv" />
 
     <Button
-        android:id="@+id/check_btn"
-        android:layout_width="0dp"
+        android:id="@+id/about_city_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/btns"
         android:fontFamily="sans-serif-thin"
-        android:text="@string/check_btn"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/atm_pressure_box"
+        android:text="@string/about_city_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/atm_pressure_box"
-        app:layout_constraintTop_toTopOf="@+id/atm_pressure_box" />
+        app:layout_constraintTop_toBottomOf="@+id/pressure_output_tv" />
+
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/btns"
+        android:fontFamily="sans-serif-thin"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:text="@string/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temp_output_tv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
