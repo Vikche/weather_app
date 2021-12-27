@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Weather Forecast</string>
+    <string name="city_hint">City</string>
+    <string name="check_btn">Check</string>
+    <string name="wind_cb">Wind speed</string>
+    <string name="pressure_cb">Atm. pressure</string>
+    <string name="switch_mode">Switch mode</string>
+    <string name="change_lang">Change language</string>
+    <string name="options">Options</string>
+    <string name="about_city_btn">About city</string>
+    <string name="back">Back</string>
+    <string name="wiki">https://en.wikipedia.org/wiki/</string>
+</resources>
