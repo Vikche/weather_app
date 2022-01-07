@@ -11,10 +11,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.vikche.weatherforecast.forecastlist.CardAdapter;
+import com.vikche.weatherforecast.forecastlist.CardDS;
+import com.vikche.weatherforecast.forecastlist.CardDSInterface;
 
 public class ForecastFragment extends Fragment {
     public static final String PARCEL = "parcel";
@@ -92,5 +99,29 @@ public class ForecastFragment extends Fragment {
                 startActivity(openBrowser);
             }
         });
+//        RecyclerView recyclerView = view.findViewById(R.id.week_forecast_rv);
+//        initDataSource(recyclerView);
+    }
+
+    private void initDataSource(RecyclerView recyclerView) {
+        CardDSInterface dataSource = new CardDS(getResources()).init();
+        final CardAdapter adapter = initRecyclerView(dataSource, recyclerView);
+    }
+
+    private CardAdapter initRecyclerView(CardDSInterface dataSource, RecyclerView recyclerView) {
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        CardAdapter cardAdapter = new CardAdapter(dataSource);
+        recyclerView.setAdapter(cardAdapter);
+        cardAdapter.SetOnItemClickListener(new CardAdapter.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(getActivity(), String.format("Position - %d", position)
+                , Toast.LENGTH_SHORT).show();
+            }
+        });
+        return cardAdapter;
     }
 }

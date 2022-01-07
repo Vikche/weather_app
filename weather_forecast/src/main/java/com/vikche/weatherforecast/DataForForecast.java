@@ -12,23 +12,6 @@ public class DataForForecast implements Parcelable {
     private boolean isPressureBoxChecked;
     private int resourceIndex;
 
-    public static final Creator<DataForForecast> CREATOR = new Creator<DataForForecast>() {
-        @RequiresApi(api = Build.VERSION_CODES.Q)
-        @Override
-        public DataForForecast createFromParcel(Parcel source) {
-            String cityName = source.readString();
-            boolean isWindBoxChecked = source.readBoolean();
-            boolean isPressureBoxChecked = source.readBoolean();
-            int resourceIndex = source.readInt();
-            return new DataForForecast(cityName, isWindBoxChecked, isPressureBoxChecked, resourceIndex);
-        }
-
-        @Override
-        public DataForForecast[] newArray(int size) {
-            return new DataForForecast[size];
-        }
-    };
-
     public String getCityName() {
         return cityName;
     }
@@ -51,6 +34,23 @@ public class DataForForecast implements Parcelable {
         this.isPressureBoxChecked = isPressureBoxChecked;
         this.resourceIndex = resourceIndex;
     }
+
+    public static final Creator<DataForForecast> CREATOR = new Creator<DataForForecast>() {
+        @RequiresApi(api = Build.VERSION_CODES.Q)
+        @Override
+        public DataForForecast createFromParcel(Parcel source) {
+            String cityName = source.readString();
+            boolean isWindBoxChecked = source.readBoolean();
+            boolean isPressureBoxChecked = source.readBoolean();
+            int resourceIndex = source.readInt();
+            return new DataForForecast(cityName, isWindBoxChecked, isPressureBoxChecked, resourceIndex);
+        }
+
+        @Override
+        public DataForForecast[] newArray(int size) {
+            return new DataForForecast[size];
+        }
+    };
 
     @Override
     public int describeContents() {

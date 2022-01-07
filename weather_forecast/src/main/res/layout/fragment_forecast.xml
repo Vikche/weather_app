@@ -100,32 +100,45 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-thin"
         android:text="mmHg"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/about_city_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pressure_tv"
         app:layout_constraintTop_toBottomOf="@+id/city_tv" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/week_forecast_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/coat_of_arms"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/m_s"
+        tools:itemCount="7"
+        tools:listitem="@layout/forecast_item" />
 
     <Button
         android:id="@+id/back_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/btns"
         android:fontFamily="sans-serif-thin"
         android:text="@string/back"
         android:textColor="@color/white"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/coat_of_arms"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temperature_tv" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/coat_of_arms"
@@ -143,16 +156,16 @@
         android:id="@+id/about_city_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/btns"
         android:fontFamily="sans-serif-thin"
         android:text="@string/about_city_btn"
         android:textColor="@color/white"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/coat_of_arms"
-        app:layout_constraintTop_toBottomOf="@+id/pressure_tv" />
+        app:layout_constraintStart_toEndOf="@+id/coat_of_arms" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

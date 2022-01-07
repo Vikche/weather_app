@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="cities">
-        <item>Moscow</item>
-        <item>Saint Petersburg</item>
-        <item>New York</item>
-        <item>Los Angeles</item>
-    </string-array>
-
     <array name="coa_imgs">
         <item>@drawable/coa_mos</item>
         <item>@drawable/coa_spb</item>
         <item>@drawable/coa_ny</item>
         <item>@drawable/coa_la</item>
     </array>
+
+    <string-array name="cities">
+        <item>Moscow</item>
+        <item>Saint Petersburg</item>
+        <item>New York</item>
+        <item>Los Angeles</item>
+    </string-array>
 
     <string-array name="temperatures">
         <item>+15</item>
@@ -33,5 +33,15 @@
         <item>730</item>
         <item>740</item>
         <item>750</item>
+    </string-array>
+
+    <string-array name="week_days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
     </string-array>
 </resources>

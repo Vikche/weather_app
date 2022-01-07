@@ -101,8 +101,9 @@ public class ParametersFragment extends Fragment implements Constants {
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putParcelable("ChosenCity", dataForForecast);
         super.onSaveInstanceState(outState);
+        outState.putParcelable("ChosenCity", dataForForecast);
+        Toast.makeText(getActivity(),"onSaveInstanceState",Toast.LENGTH_SHORT).show();
     }
 
     public void memorizeData() {
