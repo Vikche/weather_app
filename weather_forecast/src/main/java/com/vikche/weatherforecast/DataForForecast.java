@@ -7,7 +7,7 @@ import android.os.Parcelable;
 import androidx.annotation.RequiresApi;
 
 public class DataForForecast implements Parcelable {
-    private String cityName;
+    private String cityName = "";
     private boolean isWindBoxChecked;
     private boolean isPressureBoxChecked;
     private int resourceIndex;
@@ -33,6 +33,9 @@ public class DataForForecast implements Parcelable {
         this.isWindBoxChecked = isWindBoxChecked;
         this.isPressureBoxChecked = isPressureBoxChecked;
         this.resourceIndex = resourceIndex;
+    }
+
+    public DataForForecast() {
     }
 
     public static final Creator<DataForForecast> CREATOR = new Creator<DataForForecast>() {

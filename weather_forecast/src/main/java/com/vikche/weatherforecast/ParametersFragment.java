@@ -92,7 +92,7 @@ public class ParametersFragment extends Fragment implements Constants {
         if (savedInstanceState != null) {
             dataForForecast = savedInstanceState.getParcelable("ChosenCity");
         } else {
-            dataForForecast = new DataForForecast(getResources().getStringArray(R.array.cities)[0], cbWindSpeed.isChecked(), cbAtmPressure.isChecked(), 0);
+            dataForForecast = new DataForForecast();
         }
         if (isLandscape) {
             showForecast(dataForForecast);
@@ -103,7 +103,6 @@ public class ParametersFragment extends Fragment implements Constants {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelable("ChosenCity", dataForForecast);
-        Toast.makeText(getActivity(),"onSaveInstanceState",Toast.LENGTH_SHORT).show();
     }
 
     public void memorizeData() {
@@ -113,12 +112,12 @@ public class ParametersFragment extends Fragment implements Constants {
 
     public void showForecast(DataForForecast dataForForecast) {
         if (isLandscape) {
-            ForecastFragment forecast = (ForecastFragment) getFragmentManager().findFragmentById(R.id.fragment_forecast);
+            ForecastFragment forecast = (ForecastFragment) getFragmentManager().findFragmentById(R.id.forecast_fragment_container_land);
 
             if (forecast == null || forecast.getParcel().getCityName() != dataForForecast.getCityName()) {
                 forecast = ForecastFragment.create(dataForForecast);
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.fragment_forecast, forecast);
+                ft.replace(R.id.forecast_fragment_container_land, forecast);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.commit();
             }

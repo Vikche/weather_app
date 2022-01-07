@@ -7,15 +7,15 @@
     android:orientation="horizontal">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_parameters"
+        android:id="@+id/parameters_fragment_container_land"
         android:name="com.vikche.weatherforecast.ParametersFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         tools:layout="@layout/fragment_parameters"/>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_forecast"
+    <FrameLayout
+        android:id="@+id/forecast_fragment_container_land"
         android:name="com.vikche.weatherforecast.ForecastFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

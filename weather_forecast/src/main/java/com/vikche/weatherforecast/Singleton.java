@@ -1,11 +1,14 @@
 package com.vikche.weatherforecast;
 
+import java.util.List;
+
 //Singleton
 public final class Singleton {
     private static Singleton instance = null;
     private static final Object SYNC_OBJ = new Object();
     private boolean isWindBoxChecked;
     private boolean isPressureBoxChecked;
+    private List<String> cities;
 
     private Singleton() {
     }
