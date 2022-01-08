@@ -1,5 +1,6 @@
 package com.vikche.weatherforecast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //Singleton
@@ -8,9 +9,22 @@ public final class Singleton {
     private static final Object SYNC_OBJ = new Object();
     private boolean isWindBoxChecked;
     private boolean isPressureBoxChecked;
-    private List<String> cities;
+    private ArrayList<String> cities = new ArrayList<>();
 
     private Singleton() {
+    }
+
+    public ArrayList<String> getCities() {
+        return cities;
+    }
+
+    public void addCities(String city) {
+        if (cities.contains(city)) {
+            cities.remove(city);
+            cities.add(0,city);
+        } else {
+            cities.add(0,city);
+        }
     }
 
     public boolean isWindBoxChecked() {
