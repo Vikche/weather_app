@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Прогноз погоды</string>
+    <string name="city_hint">Город</string>
+    <string name="check_btn">Проверить</string>
+    <string name="wind_cb">Скор. ветра</string>
+    <string name="pressure_cb">Атм. давление</string>
+    <string name="options">Параметры</string>
+    <string name="switch_mode">Переключить тему</string>
+    <string name="change_lang">Сменить язык</string>
+    <string name="about_city_btn">О городе</string>
+    <string name="wiki">https://ru.wikipedia.org/wiki/</string>
+    <string name="back">Назад</string>
+</resources>
