@@ -12,18 +12,17 @@
         android:theme="@style/Theme.Study">
         <activity
             android:name=".ForecastActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Study.NoActionBar" />
+            android:exported="true"/>
+
         <activity
             android:name=".ParametersActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Study.NoActionBar">
+            android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+    </application>
 </manifest>

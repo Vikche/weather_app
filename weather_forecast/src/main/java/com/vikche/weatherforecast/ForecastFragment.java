@@ -44,7 +44,8 @@ public class ForecastFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_forecast, container, false);
     }
 
@@ -124,7 +125,8 @@ public class ForecastFragment extends Fragment {
         CardAdapter cardAdapter = new CardAdapter(dataSource);
         recyclerView.setAdapter(cardAdapter);
 
-        DividerItemDecoration itemDecoration = new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL);
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(getActivity(),
+                LinearLayoutManager.VERTICAL);
         itemDecoration.setDrawable(getActivity().getDrawable(R.drawable.card_separator));
         recyclerView.addItemDecoration(itemDecoration);
 

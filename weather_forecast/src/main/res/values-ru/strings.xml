@@ -11,4 +11,6 @@
     <string name="about_city_btn">О городе</string>
     <string name="wiki">https://ru.wikipedia.org/wiki/</string>
     <string name="back">Назад</string>
+    <string name="developers">Разработчики</string>
+    <string name="copyright">Рвзработчик\n© 2022 vikche</string>
 </resources>

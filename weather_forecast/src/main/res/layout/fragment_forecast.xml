@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/city_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Saint Petersburg" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/temperature_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/city_tv"
         tools:text="+0" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/c"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toEndOf="@+id/temperature_tv"
         app:layout_constraintTop_toBottomOf="@+id/city_tv" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/wind_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/city_tv"
         tools:text="5" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/m_s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
         app:layout_constraintStart_toEndOf="@+id/wind_tv"
         app:layout_constraintTop_toBottomOf="@+id/city_tv" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/pressure_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/city_tv"
         tools:text="750" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/mm_hg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
         tools:itemCount="7"
         tools:listitem="@layout/forecast_item" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/back_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -143,7 +143,7 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/coat_of_arms_iv"
         android:layout_width="56dp"
         android:layout_height="50dp"
@@ -155,7 +155,7 @@
         app:layout_constraintTop_toTopOf="@+id/about_city_btn"
         tools:srcCompat="@drawable/coa_spb" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/about_city_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -11,4 +11,6 @@
     <string name="about_city_btn">About city</string>
     <string name="back">Back</string>
     <string name="wiki">https://en.wikipedia.org/wiki/</string>
+    <string name="developers">Developers</string>
+    <string name="copyright">Developer\n© 2022 vikche</string>
 </resources>

@@ -3,7 +3,7 @@
     <style name="Theme.Study.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/back_top</item>
-        <item name="colorPrimaryVariant">@color/back_top</item>
+        <item name="colorPrimaryVariant">@color/status_bar</item>
         <item name="colorOnPrimary">@color/btns</item>
         <!-- Customize your theme here. -->
     </style>
