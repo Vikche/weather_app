@@ -1,18 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Study" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-
+    <style name="Theme.WeatherForecast" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/back_top</item>
-        <item name="colorPrimaryVariant">@color/status_bar</item>
+        <item name="colorPrimary">@color/bars</item>
+        <item name="colorPrimaryVariant">@color/btns</item>
         <item name="colorOnPrimary">@color/btns</item>
-        <!-- Secondary brand color. -->
-
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">
-            ?attr/colorPrimaryVariant
-        </item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <!-- Switch color. -->
+        <item name="colorControlActivated">?attr/colorOnPrimary</item>
     </style>
 
 </resources>

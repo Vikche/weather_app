@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-public class BottomSheetDialog extends BottomSheetDialogFragment {
+public class BottomSheetFragment extends BottomSheetDialogFragment {
 
     @Nullable
     @Override

@@ -1,7 +1,6 @@
-package com.vikche.weatherforecast;
+package com.vikche.weatherforecast.data;
 
 import java.util.ArrayList;
-import java.util.List;
 
 //Singleton
 public final class Singleton {

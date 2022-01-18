@@ -1,4 +1,4 @@
-package com.vikche.weatherforecast;
+package com.vikche.weatherforecast.ui.home;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -21,12 +21,16 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.vikche.weatherforecast.R;
+import com.vikche.weatherforecast.data.DataForForecast;
 import com.vikche.weatherforecast.forecastlist.CardAdapter;
 import com.vikche.weatherforecast.forecastlist.CardDS;
 import com.vikche.weatherforecast.forecastlist.CardDSInterface;
 
 public class ForecastFragment extends Fragment {
     public static final String PARCEL = "parcel";
+
+    private ForecastViewModel forecastViewModel;
 
     //fabric method for fragment creation
     public static ForecastFragment create(DataForForecast dataForForecast) {
@@ -44,9 +48,8 @@ public class ForecastFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_forecast, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_forecast,container,false);
     }
 
     @Override

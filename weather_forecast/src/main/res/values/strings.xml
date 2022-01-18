@@ -13,4 +13,8 @@
     <string name="wiki">https://en.wikipedia.org/wiki/</string>
     <string name="developers">Developers</string>
     <string name="copyright">Developer\n© 2022 vikche</string>
+    <string name="city">City</string>
+    <string name="forecast">Forecast</string>
+    <string name="settings">Settings</string>
+    <string name="info">Info</string>
 </resources>

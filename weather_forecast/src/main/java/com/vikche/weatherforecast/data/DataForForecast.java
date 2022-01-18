@@ -1,4 +1,4 @@
-package com.vikche.weatherforecast;
+package com.vikche.weatherforecast.data;
 
 import android.os.Build;
 import android.os.Parcel;
