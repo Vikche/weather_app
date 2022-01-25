@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@id/navigation_city">
+
+    <fragment
+        android:id="@+id/navigation_city"
+        android:name="com.vikche.weatherforecast.ui.home.CityFragment"
+        android:label="@string/city"
+        tools:layout="@layout/fragment_city" >
+        <action
+            android:id="@+id/action_navigation_city_to_forecast"
+            app:destination="@id/navigation_forecast"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.vikche.weatherforecast.ui.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/navigation_info"
+        android:name="com.vikche.weatherforecast.ui.info.InfoFragment"
+        android:label="@string/info"
+        tools:layout="@layout/fragment_info"/>
+    <fragment
+        android:id="@+id/navigation_forecast"
+        android:name="com.vikche.weatherforecast.ui.home.ForecastFragment"
+        android:label="ForecastFragment"
+        tools:layout="@layout/fragment_forecast">
+        <argument
+            android:name="data"
+            app:argType="com.vikche.weatherforecast.data.DataForForecast" />
+    </fragment>
+</navigation>

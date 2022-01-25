@@ -7,8 +7,8 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
-    android:background="@color/back_top"
+    android:background="@color/bars"
     android:fontFamily="sans-serif-thin"
-    android:textColor="@color/white"
+    android:textColor="@color/text"
     android:textSize="30sp"
     tools:text="Tomorrow" />
