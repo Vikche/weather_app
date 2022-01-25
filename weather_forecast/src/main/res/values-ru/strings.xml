@@ -13,4 +13,8 @@
     <string name="back">Назад</string>
     <string name="developers">Разработчики</string>
     <string name="copyright">Рвзработчик\n© 2022 vikche</string>
+    <string name="city">Город</string>
+    <string name="forecast">Прогноз</string>
+    <string name="settings">Настройки</string>
+    <string name="info">Инфо</string>
 </resources>

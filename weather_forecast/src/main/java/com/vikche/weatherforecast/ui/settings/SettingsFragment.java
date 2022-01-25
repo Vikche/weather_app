@@ -9,20 +9,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 
-import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.vikche.weatherforecast.R;
 
-public class SettingsActivity extends Fragment {
+public class SettingsFragment extends Fragment {
     private static final int SETTING_CODE = 88;
 
-    public SettingsActivity() {
+    public SettingsFragment() {
         // Required empty public constructor
     }
 
-    public static SettingsActivity newInstance() {
-        SettingsActivity fragment = new SettingsActivity();
+    public static SettingsFragment newInstance() {
+        SettingsFragment fragment = new SettingsFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;

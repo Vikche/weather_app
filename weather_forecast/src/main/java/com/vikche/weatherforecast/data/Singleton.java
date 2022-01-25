@@ -6,8 +6,6 @@ import java.util.ArrayList;
 public final class Singleton {
     private static Singleton instance = null;
     private static final Object SYNC_OBJ = new Object();
-    private boolean isWindBoxChecked;
-    private boolean isPressureBoxChecked;
     private ArrayList<String> cities = new ArrayList<>();
 
     private Singleton() {
@@ -24,22 +22,6 @@ public final class Singleton {
         } else {
             cities.add(0,city);
         }
-    }
-
-    public boolean isWindBoxChecked() {
-        return isWindBoxChecked;
-    }
-
-    public void setWindBoxChecked(boolean windBoxChecked) {
-        isWindBoxChecked = windBoxChecked;
-    }
-
-    public boolean isPressureBoxChecked() {
-        return isPressureBoxChecked;
-    }
-
-    public void setPressureBoxChecked(boolean pressureBoxChecked) {
-        isPressureBoxChecked = pressureBoxChecked;
     }
 
     public static Singleton getInstance() {

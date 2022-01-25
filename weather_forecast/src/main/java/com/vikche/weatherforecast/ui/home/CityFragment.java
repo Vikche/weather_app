@@ -3,10 +3,10 @@ package com.vikche.weatherforecast.ui.home;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.res.Configuration;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,35 +14,53 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.vikche.weatherforecast.databinding.FragmentCityBinding;
 import com.vikche.weatherforecast.R;
-import com.vikche.weatherforecast.data.Constants;
 import com.vikche.weatherforecast.data.DataForForecast;
 import com.vikche.weatherforecast.data.Singleton;
 
 import java.util.ArrayList;
 
-public class CityFragment extends Fragment implements Constants {
+public class CityFragment extends Fragment {
     private DataForForecast dataForForecast;
-    private boolean isLandscape;
-
-    private ForecastViewModel forecastViewModel;
+    private CityViewModel cityViewModel;
     private FragmentCityBinding binding;
+    private OnCityFragmentListener callBack;
+
+    public interface OnCityFragmentListener {
+        void showForecast(DataForForecast dataForForecast);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof OnCityFragmentListener) {
+            callBack = (OnCityFragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + "must implement Interface");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callBack = null;
+    }
 
     //fragment view creation, layout inflation
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        forecastViewModel = new ViewModelProvider(this).get(ForecastViewModel.class);
+        cityViewModel = new ViewModelProvider(this).get(CityViewModel.class);
         binding = FragmentCityBinding.inflate(inflater, container, false);
-
         return binding.getRoot();
     }
 
@@ -50,31 +68,33 @@ public class CityFragment extends Fragment implements Constants {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        implementInterface();
+        implementLayout();
     }
 
-    private void implementInterface() {
+    private void implementLayout() {
         //implementation of autoCompleteTextView functionality
         String[] cities = getResources().getStringArray(R.array.cities);
-        AutoCompleteTextView actvCity = getView().findViewById(R.id.city_actv);
+        MaterialAutoCompleteTextView actvCity = getView().findViewById(R.id.city_actv);
         ArrayAdapter<String> actvAdapter = new ArrayAdapter<>(getView().getContext(),
                 android.R.layout.simple_list_item_1, cities);
         actvCity.setAdapter(actvAdapter);
+        //CheckBoxes, ListView initialization
+        final MaterialCheckBox windSpeed = binding.windSpeedCb;
+        final MaterialCheckBox atmPressure = binding.atmPressureCb;
+        cityViewModel.getCheckedBoxes().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                windSpeed.setChecked(aBoolean);
+                atmPressure.setChecked(aBoolean);
+            }
+        });
 
-        //CheckBoxes initialization
-        CheckBox cbWindSpeed = getView().findViewById(R.id.wind_speed_cb);
-        CheckBox cbAtmPressure = getView().findViewById(R.id.atm_pressure_cb);
-        cbWindSpeed.setChecked(Singleton.getInstance().isWindBoxChecked());
-        cbAtmPressure.setChecked(Singleton.getInstance().isPressureBoxChecked());
-
-        //implementation of ListView
-        ListView lvCitiesHistory = getView().findViewById(R.id.cities_history_lv);
-        ArrayList<String> alCitiesHistory = Singleton.getInstance().getCities();
-        ArrayAdapter<String> aaCitiesHistory = new ArrayAdapter<>(getActivity(), R.layout.item_city,
-                alCitiesHistory);
-        lvCitiesHistory.setAdapter(aaCitiesHistory);
-        lvCitiesHistory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        final ListView citiesHistoryLV = binding.citiesHistoryLv;
+        ArrayList<String> citiesHistoryAL = Singleton.getInstance().getCities();
+        ArrayAdapter<String> citiesHistoryAA = new ArrayAdapter<>(getActivity(), R.layout.item_city,
+                citiesHistoryAL);
+        citiesHistoryLV.setAdapter(citiesHistoryAA);
+        citiesHistoryLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView textView = (TextView) view;
@@ -85,18 +105,19 @@ public class CityFragment extends Fragment implements Constants {
                     }
                 }
                 dataForForecast = new DataForForecast(textView.getText().toString(),
-                        cbWindSpeed.isChecked(), cbAtmPressure.isChecked(), elemIndex);
-                Snackbar.make(view, "Confirm check action", Snackbar.LENGTH_LONG).
-                        setAction("Confirm", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                showForecast(dataForForecast);
-                            }
-                        }).show();
+                        windSpeed.isChecked(), atmPressure.isChecked(), elemIndex);
+                callBack.showForecast(dataForForecast);
+//                Snackbar.make(view, "Confirm check action", Snackbar.LENGTH_LONG).
+//                        setAction("Confirm", new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                callBack.showForecast(dataForForecast);
+//                            }
+//                        }).show();
             }
         });
 
-        Button checkBtn = getView().findViewById(R.id.check_btn);
+        MaterialButton checkBtn = getView().findViewById(R.id.check_btn);
         checkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,75 +135,26 @@ public class CityFragment extends Fragment implements Constants {
                     Snackbar.make(v, "Please, enter correct city", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
-                memorizeData(cbWindSpeed, cbAtmPressure, actvCity);
-                aaCitiesHistory.notifyDataSetChanged();
+                memorizeData(actvCity);
+                citiesHistoryAA.notifyDataSetChanged();
                 dataForForecast = new DataForForecast(actvCity.getText().toString(),
-                        cbWindSpeed.isChecked(), cbAtmPressure.isChecked(), elemIndex);
+                        windSpeed.isChecked(), atmPressure.isChecked(), elemIndex);
                 actvCity.setText("");
-                Snackbar.make(getView(), "Confirm check action", Snackbar.LENGTH_LONG).
-                        setAction("Confirm", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                showForecast(dataForForecast);
-                            }
-                        }).show();
+                callBack.showForecast(dataForForecast);
+
+//                Snackbar.make(getView(), "Confirm check action", Snackbar.LENGTH_LONG).
+//                        setAction("Confirm", new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//
+//                                callBack.showForecast(dataForForecast);
+//                            }
+//                        }).show();
             }
         });
     }
 
-    //activity created, check if orientation - landscape
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        isLandscape = getResources().getConfiguration().orientation ==
-                Configuration.ORIENTATION_LANDSCAPE;
-        if (savedInstanceState != null) {
-            dataForForecast = savedInstanceState.getParcelable("ChosenCity");
-        } else {
-            dataForForecast = new DataForForecast();
-        }
-        if (isLandscape) {
-            showForecast(dataForForecast);
-        }
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putParcelable("ChosenCity", dataForForecast);
-    }
-
-    public void memorizeData(CheckBox cbWindSpeed, CheckBox cbAtmPressure,
-                             AutoCompleteTextView actv) {
-        Singleton.getInstance().setWindBoxChecked(cbWindSpeed.isChecked());
-        Singleton.getInstance().setPressureBoxChecked(cbAtmPressure.isChecked());
+    public void memorizeData(AutoCompleteTextView actv) {
         Singleton.getInstance().addCities(actv.getText().toString());
-    }
-
-    public void showForecast(DataForForecast dataForForecast) {
-        ForecastFragment forecastFragment = (ForecastFragment) getFragmentManager().
-                findFragmentById(R.id.forecast_container);
-
-        if (forecastFragment == null || forecastFragment.getParcel().getCityName() !=
-                dataForForecast.getCityName()) {
-            if (isLandscape) {
-                forecastFragment = ForecastFragment.create(dataForForecast);
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.forecast_container, forecastFragment);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-//                ft.commit();
-            } else {
-                forecastFragment = ForecastFragment.create(dataForForecast);
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.nav_fragment_main, forecastFragment);
-                ft.addToBackStack(null);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.commit();
-            }
-//            Intent intent = new Intent();
-//            intent.setClass(getActivity(), ForecastActivity.class);
-//            intent.putExtra(PARCEL, dataForForecast);
-//            startActivity(intent);
-        }
     }
 }

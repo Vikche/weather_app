@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_height="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <com.google.android.material.textfield.MaterialAutoCompleteTextView
+        android:id="@+id/city_actv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/btns"
         android:fontFamily="sans-serif-thin"
         android:hint="@string/city_hint"
-        android:id="@+id/city_actv"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_width="0dp"
         android:singleLine="true"
         android:textColor="@color/text"
         android:textSize="34sp"
@@ -23,15 +22,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/wind_speed_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:buttonTint="@color/btns"
         android:checked="false"
         android:fontFamily="sans-serif-thin"
-        android:id="@+id/wind_speed_cb"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
         android:text="@string/wind_cb"
         android:textColor="@color/text"
         android:textSize="14sp"
@@ -40,12 +39,12 @@
         app:layout_constraintTop_toBottomOf="@+id/city_actv" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:buttonTint="@color/btns"
-        android:fontFamily="sans-serif-thin"
         android:id="@+id/atm_pressure_cb"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
+        android:buttonTint="@color/btns"
+        android:fontFamily="sans-serif-thin"
         android:text="@string/pressure_cb"
         android:textColor="@color/text"
         android:textSize="14sp"
@@ -54,13 +53,13 @@
         app:layout_constraintTop_toBottomOf="@+id/city_actv" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/check_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/btns"
         android:fontFamily="sans-serif-thin"
-        android:id="@+id/check_btn"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_width="0dp"
         android:text="@string/check_btn"
         android:textColor="@color/text"
         android:textSize="14sp"
@@ -70,14 +69,14 @@
         app:layout_constraintTop_toTopOf="@+id/atm_pressure_cb" />
 
     <ListView
-        android:divider="@drawable/card_separator"
         android:id="@+id/cities_history_lv"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:divider="@drawable/card_separator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

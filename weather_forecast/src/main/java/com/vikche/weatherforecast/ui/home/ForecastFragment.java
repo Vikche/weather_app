@@ -1,5 +1,6 @@
 package com.vikche.weatherforecast.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.vikche.weatherforecast.CityActivity;
 import com.vikche.weatherforecast.R;
 import com.vikche.weatherforecast.data.DataForForecast;
 import com.vikche.weatherforecast.forecastlist.CardAdapter;
@@ -28,14 +30,14 @@ import com.vikche.weatherforecast.forecastlist.CardDS;
 import com.vikche.weatherforecast.forecastlist.CardDSInterface;
 
 public class ForecastFragment extends Fragment {
-    public static final String PARCEL = "parcel";
+    public static final String PARCEL = "Data";
 
-    private ForecastViewModel forecastViewModel;
+    private CityViewModel cityViewModel;
+    private DataForForecast dataForForecast;
 
     //fabric method for fragment creation
     public static ForecastFragment create(DataForForecast dataForForecast) {
         ForecastFragment forecastFragment = new ForecastFragment();
-
         Bundle bundle = new Bundle();
         bundle.putParcelable(PARCEL, dataForForecast);
         forecastFragment.setArguments(bundle);
@@ -55,7 +57,7 @@ public class ForecastFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        DataForForecast dataForForecast = getParcel();
+            dataForForecast = getParcel();
 
         if (!dataForForecast.getCityName().equals("")) {
             TextView cityName = view.findViewById(R.id.city_tv);
